@@ -8,8 +8,8 @@
         :root {
             --primary: #4F46E5;
             --primary-hover: #4338CA;
-            --bg-color: #F3F4F6;
-            --card-bg: #FFFFFF;
+            --bg-color: transparent; /* Changed to transparent as image is now the main background */
+            --card-bg: rgba(255, 255, 255, 0.95); /* Slightly transparent for a glass effect, or can be full #FFFFFF */
             --text-main: #1F2937;
             --text-muted: #6B7280;
             --error: #EF4444;
@@ -17,9 +17,33 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
         
-        .container { background: var(--card-bg); padding: 40px 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 100%; max-width: 420px; position: relative; overflow: hidden; }
+        /* Applied the user requested image as the body background */
+        body { 
+            background-image: url('https://i.imgur.com/H46KuIJ.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Optional: fixes the background in place */
+            color: var(--text-main); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px; 
+        }
+        
+        .container { 
+            background: var(--card-bg); 
+            padding: 40px 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Adjusted shadow for visibility against background */
+            width: 100%; 
+            max-width: 420px; 
+            position: relative; 
+            overflow: hidden; 
+            backdrop-filter: blur(5px); /* Adds a subtle blur behind the card (works well with translucent card background) */
+        }
         .hidden { display: none !important; }
         
         h2 { text-align: center; margin-bottom: 24px; color: var(--text-main); }
@@ -133,6 +157,7 @@
         } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
         import { getDatabase, ref, set, get, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
+        // WARNING: Exposed Firebase API Key - ensure database rules are properly secured!
         const firebaseConfig = {
             apiKey: "AIzaSyAgUl-DSLAGA4pRvmKTacvowO4E0OEXo5w",
             authDomain: "abcd-b1870.firebaseapp.com",
@@ -306,7 +331,7 @@
                         showView('expired');
                         update(ref(db, `users/${user.uid}`), { status: 'expired' });
                     } else {
-                        // Terus bawa pengguna ke pautan aplikasi
+                        // Redirect to actual application URL
                         window.location.href = APP_URL;
                     }
                 } else {
