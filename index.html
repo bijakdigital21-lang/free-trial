@@ -8,8 +8,8 @@
         :root {
             --primary: #4F46E5;
             --primary-hover: #4338CA;
-            --bg-color: transparent; /* Changed to transparent as image is now the main background */
-            --card-bg: rgba(255, 255, 255, 0.95); /* Slightly transparent for a glass effect, or can be full #FFFFFF */
+            --bg-color: transparent;
+            --card-bg: rgba(255, 255, 255, 0.95);
             --text-main: #1F2937;
             --text-muted: #6B7280;
             --error: #EF4444;
@@ -18,13 +18,12 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
-        /* Applied the user requested image as the body background */
         body { 
             background-image: url('https://i.imgur.com/H46KuIJ.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* Optional: fixes the background in place */
+            background-attachment: fixed;
             color: var(--text-main); 
             display: flex; 
             justify-content: center; 
@@ -37,12 +36,12 @@
             background: var(--card-bg); 
             padding: 40px 30px; 
             border-radius: 12px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Adjusted shadow for visibility against background */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
             width: 100%; 
             max-width: 420px; 
             position: relative; 
             overflow: hidden; 
-            backdrop-filter: blur(5px); /* Adds a subtle blur behind the card (works well with translucent card background) */
+            backdrop-filter: blur(5px); 
         }
         .hidden { display: none !important; }
         
@@ -103,6 +102,7 @@
                 <input type="password" id="login-password" placeholder="••••••••" required>
             </div>
             <button type="submit" id="login-btn" class="btn">LOGIN</button>
+            <button type="button" id="btn-register-now" class="btn btn-outline" style="margin-top: 10px;">REGISTER NOW</button>
             <span class="toggle-link" id="show-register">Don't have an account? Create one</span>
         </form>
 
@@ -157,7 +157,6 @@
         } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
         import { getDatabase, ref, set, get, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-        // WARNING: Exposed Firebase API Key - ensure database rules are properly secured!
         const firebaseConfig = {
             apiKey: "AIzaSyAgUl-DSLAGA4pRvmKTacvowO4E0OEXo5w",
             authDomain: "abcd-b1870.firebaseapp.com",
@@ -212,7 +211,14 @@
             btn.innerText = isLoading ? 'PROCESSING...' : text;
         }
 
-        document.getElementById('show-register').onclick = () => { forms.login.classList.add('hidden'); forms.register.classList.remove('hidden'); clearMessage(); };
+        const openRegisterForm = () => { 
+            forms.login.classList.add('hidden'); 
+            forms.register.classList.remove('hidden'); 
+            clearMessage(); 
+        };
+
+        document.getElementById('show-register').onclick = openRegisterForm;
+        document.getElementById('btn-register-now').onclick = openRegisterForm;
         document.getElementById('show-login').onclick = () => { forms.register.classList.add('hidden'); forms.login.classList.remove('hidden'); clearMessage(); };
 
         const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -331,7 +337,6 @@
                         showView('expired');
                         update(ref(db, `users/${user.uid}`), { status: 'expired' });
                     } else {
-                        // Redirect to actual application URL
                         window.location.href = APP_URL;
                     }
                 } else {
