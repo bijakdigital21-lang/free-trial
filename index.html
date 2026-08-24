@@ -128,6 +128,16 @@
             background-color: #A0AEC0 !important;
         }
 
+        /* STYLING KHAS UNTUK WHATSAPP BUTTON */
+        .nav-item.whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .nav-item.whatsapp-btn:hover {
+            background-color: #1EBE5D;
+        }
+
         .nav-item.logout-btn {
             background-color: #E74C3C;
             margin-top: auto;
@@ -782,6 +792,10 @@
             <li class="nav-item" onclick="playClickSound(); navigateTo('scores-screen', this)">
                 🏆 Scores
             </li>
+            <!-- BUTTON CONTACT US WHATSAPP -->
+            <a href="https://wa.me/60196818139?text=GrammarHub" target="_blank" class="nav-item whatsapp-btn" onclick="playClickSound()">
+                💬 Contact Us
+            </a>
             <li class="nav-item logout-btn" onclick="playClickSound(); logout()">
                 🚪 Logout
             </li>
