@@ -3,211 +3,1085 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App - 3 Days Free Trial</title>
+    <title>Grammar Hub - Primary School English</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4F46E5;
-            --primary-hover: #4338CA;
-            --bg-color: transparent;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --text-main: #1F2937;
-            --text-muted: #6B7280;
-            --error: #EF4444;
-            --success: #10B981;
-            --whatsapp: #25D366;
-            --whatsapp-hover: #1EBE5D;
-            --lifetime: #F59E0B;
-            --lifetime-hover: #D97706;
+            --primary-yellow: #FFDE59;
+            --primary-pink: #FF66C4;
+            --primary-blue: #5CE1E6;
+            --primary-green: #7ED957;
+            --primary-purple: #C38FFF;
+            --sidebar-bg: rgba(44, 62, 80, 0.9);
+            --sidebar-text: #FFFFFF;
+            --text-dark: #2C3E50;
+            --white: rgba(255, 255, 255, 0.95);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        body { 
-            background-image: url('https://i.imgur.com/H46KuIJ.jpeg');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://i.imgur.com/H46KuIJ.jpeg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: var(--text-main); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 20px; 
-        }
-        
-        .container { 
-            background: var(--card-bg); 
-            padding: 40px 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            width: 100%; 
-            max-width: 420px; 
-            position: relative; 
-            overflow: hidden; 
-            backdrop-filter: blur(5px); 
-        }
-        .hidden { display: none !important; }
-        
-        h2 { text-align: center; margin-bottom: 24px; color: var(--text-main); }
-        h3 { text-align: center; margin-bottom: 10px; }
-        
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-size: 14px; margin-bottom: 6px; font-weight: 500; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 14px; transition: border 0.3s; }
-        .form-group input:focus { border-color: var(--primary); outline: none; }
-        
-        .btn { width: 100%; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s; margin-top: 10px; display: block; text-align: center; text-decoration: none; }
-        .btn:hover { background: var(--primary-hover); }
-        .btn:disabled { background: #9CA3AF; cursor: not-allowed; }
-        .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
-        .btn-outline:hover { background: var(--primary); color: white; }
-        
-        /* Styles untuk Butang WhatsApp */
-        .btn-whatsapp { 
-            background: var(--whatsapp); 
-            color: white; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 8px; 
-        }
-        .btn-whatsapp:hover { 
-            background: var(--whatsapp-hover); 
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            overflow-x: hidden;
         }
 
-        /* Styles untuk Butang Lifetime Access */
-        .btn-lifetime {
-            background: var(--lifetime);
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            backdrop-filter: blur(8px);
+            color: var(--sidebar-text);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 15px;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar-logo {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 10px auto;
+            background: #E0F7FA;
+            border-radius: 50%;
+            padding: 4px;
+            border: 3px dashed var(--primary-green);
+            overflow: hidden;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .sidebar-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .sidebar-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .sidebar-subtitle {
+            font-size: 0.85rem;
+            text-align: center;
+            color: #BDC3C7;
+            margin-bottom: 25px;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            color: #ECF0F1;
+            text-decoration: none;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background-color: var(--primary-pink);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* STYLING UNTUK BUTTON LOCKED DALAM MENU */
+        .nav-item.locked {
+            background-color: #A0AEC0 !important;
+            color: #E2E8F0 !important;
+            cursor: not-allowed !important;
+            opacity: 0.85;
+            position: relative;
+        }
+
+        .nav-item.locked:hover {
+            transform: none !important;
+            background-color: #A0AEC0 !important;
+        }
+
+        .nav-item.logout-btn {
+            background-color: #E74C3C;
+            margin-top: auto;
+        }
+
+        .nav-item.logout-btn:hover {
+            background-color: #C0392B;
+        }
+
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background: var(--sidebar-bg);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            margin-left: 250px;
+            padding: 40px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: var(--white);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 650px;
+            padding: 30px;
+            text-align: center;
+            border: 5px solid var(--primary-yellow);
+            position: relative;
+        }
+
+        .card {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .input-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            outline: none;
+            background: #fff;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-pink);
+        }
+
+        .auth-switch-text {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .auth-switch-link {
+            color: #5E17EB;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .home-header {
+            margin-bottom: 15px;
+        }
+
+        .home-app-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 8px auto;
+            border-radius: 50%;
+            border: 4px solid var(--primary-yellow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .home-intro-title {
+            font-family: 'Fredoka One', cursive;
+            color: #5E17EB;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .home-intro-subtitle {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 700;
+        }
+
+        .active-profile-badge {
+            background: #E0F7FA;
+            border: 2px dashed var(--primary-blue);
+            padding: 8px 15px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .switch-profile-btn {
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 0 #8d5cc4;
+        }
+
+        .switch-profile-btn:active {
+            transform: translateY(1px);
+            box-shadow: none;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .topic-btn {
+            background-color: var(--primary-blue);
+            color: var(--text-dark);
+            border: none;
+            padding: 15px 12px;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 0 #3bafb3;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .topic-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #3bafb3;
+        }
+
+        .topic-btn:nth-child(6n-5) { background-color: var(--primary-blue); box-shadow: 0 5px 0 #3bafb3; }
+        .topic-btn:nth-child(6n-4) { background-color: var(--primary-pink); box-shadow: 0 5px 0 #c74597; color: white;}
+        .topic-btn:nth-child(6n-3) { background-color: var(--primary-green); box-shadow: 0 5px 0 #5aa33d; }
+        .topic-btn:nth-child(6n-2) { background-color: var(--primary-purple); box-shadow: 0 5px 0 #8d5cc4; color: white;}
+        .topic-btn:nth-child(6n-1) { background-color: var(--primary-yellow); box-shadow: 0 5px 0 #c2a332; }
+        .topic-btn:nth-child(6n) { background-color: #FF7043; box-shadow: 0 5px 0 #D84315; color: white; }
+
+        .lesson-box {
+            background: #F0F4F8;
+            border-radius: 18px;
+            padding: 20px;
+            text-align: left;
+            margin: 20px 0;
+            border-left: 6px solid var(--primary-purple);
+        }
+
+        .lesson-title {
+            font-family: 'Fredoka One', cursive;
+            color: #5E17EB;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .lesson-desc {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .lesson-example {
+            background: #FFFFFF;
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 2px dashed var(--primary-blue);
+            margin-top: 10px;
+        }
+
+        .lesson-example ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: #FFF9C4;
+            padding: 10px 20px;
+            border-radius: 15px;
+        }
+
+        .question-box {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #F0F4F8;
+            border-radius: 15px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .option-btn {
+            background-color: #FFFFFF;
+            border: 3px solid #CBD5E1;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary-blue);
+            background-color: #E0F7FA;
+        }
+
+        .option-btn.correct {
+            background-color: var(--primary-green) !important;
+            border-color: #4CAF50 !important;
             color: white;
         }
-        .btn-lifetime:hover {
-            background: var(--lifetime-hover);
-        }
-        
-        .lifetime-info {
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-top: 8px;
-            line-height: 1.4;
-        }
-        
-        .toggle-link { display: block; text-align: center; margin-top: 16px; font-size: 14px; color: var(--primary); cursor: pointer; text-decoration: none; }
-        .toggle-link:hover { text-decoration: underline; }
-        
-        .message { padding: 10px; border-radius: 6px; font-size: 14px; margin-bottom: 16px; text-align: center; }
-        .message.error { background: #FEE2E2; color: var(--error); border: 1px solid #FCA5A5; }
-        .message.success { background: #D1FAE5; color: var(--success); border: 1px solid #6EE7B7; }
-        
-        #loading-screen { text-align: center; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 16px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .app-header { text-align: center; margin-bottom: 30px; }
-        .status-badge { display: inline-block; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 15px; }
-        .badge-active { background: #D1FAE5; color: var(--success); }
-        .badge-expired { background: #FEE2E2; color: var(--error); }
-        
-        .verify-notice { text-align: center; padding: 20px; }
+        .option-btn.wrong {
+            background-color: #FF6B6B !important;
+            border-color: #E53935 !important;
+            color: white;
+        }
+
+        .quiz-action-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-btn {
+            background-color: #FF9800;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #E65100;
+            margin: 5px;
+            text-decoration: none;
+        }
+
+        .action-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #E65100;
+        }
+
+        .home-btn {
+            background-color: #3498DB;
+            box-shadow: 0 4px 0 #1F618D;
+        }
+
+        .home-btn:active {
+            box-shadow: 0 2px 0 #1F618D;
+        }
+
+        .clear-btn {
+            background-color: #E74C3C;
+            box-shadow: 0 4px 0 #922B21;
+        }
+
+        .clear-btn:active {
+            box-shadow: 0 2px 0 #922B21;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            font-family: 'Fredoka One', cursive;
+            color: #5E17EB;
+            margin: 15px 0;
+        }
+
+        .completion-time {
+            font-size: 0.95rem;
+            color: #555;
+            background: #E0F7FA;
+            padding: 8px 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .table-container {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 15px;
+            border-radius: 12px;
+            border: 2px solid #FFE082;
+        }
+
+        .record-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #FFFDE7;
+        }
+
+        .record-table th, .record-table td {
+            padding: 10px;
+            border: 1px solid #FFE082;
+            font-size: 0.9rem;
+        }
+
+        .record-table th {
+            background-color: var(--primary-yellow);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .profile-card-details {
+            background: #F0F4F8;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .profile-card-details p {
+            margin-bottom: 8px;
+        }
+
+        .profile-list-box {
+            background: #FFFFFF;
+            border: 2px solid var(--primary-blue);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .question-count-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .count-btn {
+            background-color: var(--primary-purple);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #8d5cc4;
+            transition: all 0.2s;
+        }
+
+        .count-btn:hover {
+            transform: translateY(-2px);
+            background-color: #b179ff;
+        }
+
+        .count-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 0 #8d5cc4;
+        }
+
+        .count-btn.locked {
+            background-color: #A0AEC0 !important;
+            box-shadow: 0 4px 0 #718096 !important;
+            opacity: 0.85;
+            position: relative;
+        }
+
+        .count-btn.locked:hover {
+            transform: none !important;
+            background-color: #A0AEC0 !important;
+        }
+
+        /* SPELLING QUIZ STYLES */
+        .spelling-img-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 10px auto;
+            border-radius: 15px;
+            border: 3px solid var(--primary-pink);
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .spelling-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .audio-btn {
+            background: var(--primary-blue);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--text-dark);
+            box-shadow: 0 3px 0 #3bafb3;
+            margin-bottom: 15px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .audio-btn:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        .slots-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .letter-slot {
+            width: 58px;
+            height: 58px;
+            border: 3px dashed var(--primary-purple);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            background: #F9F6FF;
+            color: #5E17EB;
+            cursor: pointer;
+        }
+
+        .letter-slot.filled {
+            border: 3px solid var(--primary-purple);
+            background: #E8DFFB;
+        }
+
+        .bank-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            min-height: 70px;
+        }
+
+        .draggable-letter {
+            width: 58px;
+            height: 58px;
+            background: var(--primary-yellow);
+            border: 3px solid #C2A332;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: grab;
+            box-shadow: 0 4px 0 #C2A332;
+            user-select: none;
+        }
+
+        .draggable-letter:active {
+            cursor: grabbing;
+        }
+
+        .draggable-letter.used {
+            opacity: 0.3;
+            pointer-events: none;
+            background: #DDD;
+            border-color: #AAA;
+            box-shadow: none;
+        }
+
+        /* BUILD THE SENTENCE STYLES */
+        .sentence-drop-area {
+            min-height: 80px;
+            border: 3px dashed var(--primary-purple);
+            border-radius: 15px;
+            background: #F9F6FF;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            margin: 20px 0;
+        }
+
+        .word-chip {
+            background-color: var(--primary-yellow);
+            border: 3px solid #C2A332;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: grab;
+            box-shadow: 0 3px 0 #C2A332;
+            user-select: none;
+            display: inline-block;
+        }
+
+        .word-chip:active {
+            cursor: grabbing;
+        }
+
+        .word-chip.used {
+            opacity: 0.3;
+            pointer-events: none;
+            background: #DDD;
+            border-color: #AAA;
+            box-shadow: none;
+        }
+
+        .correct-answer-box {
+            background: #E8F5E9;
+            border: 2px solid #4CAF50;
+            color: #2E7D32;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 15px 0;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                left: -260px;
+                height: 100vh;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 70px 15px 20px 15px;
+            }
+
+            .record-table th, .record-table td {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Loading State -->
-    <div id="loading-screen" class="container">
-        <div class="spinner"></div>
-        <p>Checking authentication...</p>
-    </div>
+    <!-- MOBILE TOGGLE BUTTON -->
+    <button class="mobile-toggle" id="mobile-toggle-btn" onclick="toggleSidebar(event)">☰</button>
 
-    <!-- Auth Forms -->
-    <div id="auth-container" class="container hidden">
-        <div id="auth-messages"></div>
-
-        <!-- Login Form -->
-        <form id="login-form">
-            <h2>3 DAYS FREE TRIAL </h2>
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="login-email" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="login-password" placeholder="••••••••" required>
-            </div>
-            <button type="submit" id="login-btn" class="btn">LOGIN</button>
-            <button type="button" id="btn-register-now" class="btn btn-outline" style="margin-top: 10px;">REGISTER NOW</button>
-            
-            <!-- Butang Unlock Lifetime Access -->
-            <a href="https://apps.klikwoi.net/product/82709a33-7943-4d37-b79a-c3834141cb10" target="_blank" class="btn btn-lifetime" style="margin-top: 10px;">
-                UNLOCK LIFETIME ACCESS
-            </a>
-            <div class="lifetime-info">
-              
-            </div>
-
-            <!-- Butang WhatsApp Contact Us -->
-            <a href="https://wa.me/60196818139?text=APP%20GRAMMAR%20HUB" target="_blank" class="btn btn-whatsapp" style="margin-top: 15px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                CONTACT US
-            </a>
-
-            <span class="toggle-link" id="show-register">Don't have an account? Create one</span>
-        </form>
-
-        <!-- Register Form -->
-        <form id="register-form" class="hidden">
-            <h2>Create Free Account</h2>
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" id="reg-name" placeholder="John Doe">
-            </div>
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" id="reg-email" placeholder="you@example.com">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" id="reg-password" placeholder="Min. 6 characters">
-            </div>
-            <div class="form-group">
-                <label>Confirm Password</label>
-                <input type="password" id="reg-confirm" placeholder="Repeat password">
-            </div>
-            <button type="submit" id="register-btn" class="btn">CREATE FREE ACCOUNT</button>
-            <span class="toggle-link" id="show-login">Already have an account? Login</span>
-        </form>
-    </div>
-
-    <!-- Expired View -->
-    <div id="expired-container" class="container hidden">
-        <div class="app-header">
-            <span class="status-badge badge-expired">TRIAL EXPIRED</span>
-            <h2>Your free trial has expired.</h2>
-            <p>You no longer have access to the premium content. Please upgrade your plan to continue.</p>
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <img src="https://i.imgur.com/vPd4cjj.jpeg" alt="Grammar Hub Logo">
         </div>
-        <button id="upgrade-btn" class="btn">GET FULL ACCESS</button>
-        <button id="logout-btn-expired" class="btn btn-outline" style="margin-top: 15px;">LOGOUT</button>
+        <div class="sidebar-title">Grammar Hub</div>
+        <div class="sidebar-subtitle">English KSSR Primary</div>
+
+        <ul class="nav-menu" id="nav-menu" style="display: none;">
+            <li class="nav-item active" onclick="playClickSound(); navigateTo('home-screen', this)">
+                📚 Home
+            </li>
+            <!-- BUTTON LITTLE READERS HUB YANG DI-LOCK -->
+            <li class="nav-item locked" onclick="playClickSound(); alert('Upgrade to lifetime access to unlock Little Readers Hub!')">
+                🔒 Little Readers Hub
+            </li>
+            <li class="nav-item" onclick="playClickSound(); navigateTo('profile-view-screen', this)">
+                👤 Profiles
+            </li>
+            <li class="nav-item" onclick="playClickSound(); navigateTo('scores-screen', this)">
+                🏆 Scores
+            </li>
+            <li class="nav-item logout-btn" onclick="playClickSound(); logout()">
+                🚪 Logout
+            </li>
+        </ul>
     </div>
 
-    <!-- Email Verification Notice -->
-    <div id="verify-container" class="container hidden verify-notice">
-        <h2>Verify Your Email</h2>
-        <p>Please check your email and verify your account before continuing.</p>
-        <button id="reload-btn" class="btn">I HAVE VERIFIED</button>
-        <button id="logout-btn-verify" class="btn btn-outline">LOGOUT</button>
+    <!-- MAIN CONTENT AREA -->
+    <div class="main-content">
+        <div class="container">
+
+            <!-- 1A. REGISTER SCREEN -->
+            <div id="register-screen" class="card active">
+                <h1 style="font-family: 'Fredoka One', cursive; color: #FF5757; margin-bottom: 5px;">Grammar Hub</h1>
+                <h2>Create Account to Access Free Trial 📝</h2>
+                <p style="margin-top: 1px; color: #666;">Register first to start learning English!</p>
+                
+                <div class="input-group">
+                    <label for="reg-name">Student / Parent Name</label>
+                    <input type="text" id="reg-name" class="form-input" placeholder="Enter full name">
+                </div>
+                <div class="input-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" class="form-input" placeholder="example@email.com">
+                </div>
+                <div class="input-group">
+                    <label for="reg-password">Password (Min. 6 characters)</label>
+                    <input type="password" id="reg-password" class="form-input" placeholder="••••••••">
+                </div>
+                <button class="action-btn" style="display:inline-block; width: 100%; background-color: var(--primary-pink); box-shadow: 0 4px 0 #c74597;" onclick="playClickSound(); handleRegister()">Register Now 🚀</button>
+                
+                <div class="auth-switch-text">
+                    Already have an account? <span class="auth-switch-link" onclick="playClickSound(); showScreen('login-screen')">Log In Here</span>
+                </div>
+            </div>
+
+            <!-- 1B. LOGIN SCREEN -->
+            <div id="login-screen" class="card">
+                <h1 style="font-family: 'Fredoka One', cursive; color: #FF5757; margin-bottom: 10px;">Grammar Hub</h1>
+                <h2>Welcome Back! 👋</h2>
+                <p style="margin-top: 5px; color: #666;">Log in using your registered email.</p>
+                
+                <div class="input-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" class="form-input" placeholder="example@email.com">
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-input" placeholder="••••••••">
+                </div>
+                <button class="action-btn" style="display:inline-block; width: 100%;" onclick="playClickSound(); handleLogin()">Log In 🚀</button>
+
+                <div class="auth-switch-text">
+                    Don't have an account yet? <span class="auth-switch-link" onclick="playClickSound(); showScreen('register-screen')">Register Here</span>
+                </div>
+            </div>
+
+            <!-- 2. PROFILE SELECTION / ADD SCREEN -->
+            <div id="profile-selection-screen" class="card">
+                <h2>Who is Learning? 🧒👧</h2>
+                <p style="color: #666; margin-top: 5px;">Select a student profile or add a new one.</p>
+                
+                <div class="profile-list-box" id="profile-selection-list">
+                    <!-- Profile buttons populated dynamically -->
+                </div>
+
+                <div style="margin-top: 20px; border-top: 2px dashed #DDD; padding-top: 15px;">
+                    <h3>Add New Profile</h3>
+                    <div class="input-group">
+                        <input type="text" id="new-profile-name" class="form-input" placeholder="Enter student name..." maxlength="20">
+                    </div>
+                    <button class="action-btn" style="display:inline-block;" onclick="playClickSound(); addNewProfile()">Add Profile ➕</button>
+                </div>
+            </div>
+
+            <!-- 3. HOME SCREEN -->
+            <div id="home-screen" class="card">
+                <div class="home-header">
+                    <img src="https://i.imgur.com/vPd4cjj.jpeg" alt="Grammar Hub Logo" class="home-app-logo">
+                    <h2 class="home-intro-title" id="home-greeting">Hi Student! 👋</h2>
+                    
+                    <div class="active-profile-badge">
+                        <span>Profile: <strong id="current-badge-name" style="color: #5E17EB;">-</strong></span>
+                        <button class="switch-profile-btn" onclick="playClickSound(); showScreen('profile-selection-screen')">Switch 🔄</button>
+                    </div>
+
+                    <p class="home-intro-subtitle">Pick a topic below to start learning.</p>
+                </div>
+
+                <div class="topic-grid">
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('nouns')">Nouns 🍎</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('pronouns')">Pronouns 👦👧</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('verbs')">Verbs 🏃‍♂️</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('adjectives')">Adjectives 🎨</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('prepositions')">Prepositions 📦</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('conjunctions')">Conjunctions 🔗</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('articles')">Articles (A, An, The) 🔤</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('presentTense')">Simple Present ⏰</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('pastTense')">Simple Past ⌛</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('singularPlural')">Singular & Plural 👥</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('demonstratives')">This, That, These, Those 👉</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('spelling')">Spelling ✍️</button>
+                    <button class="topic-btn" onclick="playClickSound(); openLesson('buildSentence')">Build Sentence 🧩</button>
+                </div>
+            </div>
+
+            <!-- 4. LESSON SCREEN -->
+            <div id="lesson-screen" class="card">
+                <h2 style="color: #333;">Lesson Time! 📖</h2>
+                <div class="lesson-box">
+                    <div class="lesson-title" id="lesson-title">Topic Title</div>
+                    <div class="lesson-desc" id="lesson-desc">Lesson explanation content goes here...</div>
+                    <div class="lesson-example">
+                        <strong>Examples:</strong>
+                        <div id="lesson-examples">Examples go here...</div>
+                    </div>
+                </div>
+                <button class="action-btn" style="display:inline-block; background-color: var(--primary-green); box-shadow: 0 4px 0 #5aa33d;" onclick="playClickSound(); proceedToQuestionCount()">Choose Questions 🚀</button>
+                <br>
+                <button class="action-btn home-btn" onclick="playClickSound(); navigateTo('home-screen')">Home 🏠</button>
+            </div>
+
+            <!-- SCREEN PILIH BILANGAN SOALAN -->
+            <div id="count-selection-screen" class="card">
+                <h2 style="color: #5E17EB; font-family: 'Fredoka One', cursive;">Select Question Count 📝</h2>
+                <p style="color: #666; margin-top: 5px;">How many questions would you like to answer?</p>
+                
+                <div class="question-count-grid">
+                    <button class="count-btn" onclick="playClickSound(); handleLockedCount(5)">5 Questions</button>
+                    <button class="count-btn locked" onclick="playClickSound(); handleLockedCount(10)">🔒 10 Questions</button>
+                    <button class="count-btn locked" onclick="playClickSound(); handleLockedCount(20)">🔒 20 Questions</button>
+                    <button class="count-btn locked" onclick="playClickSound(); handleLockedCount(40)">🔒 40 Questions</button>
+                </div>
+                <br>
+                <button class="action-btn home-btn" onclick="playClickSound(); navigateTo('home-screen')">Back to Home 🏠</button>
+            </div>
+
+            <!-- 5. PROFILES & ACCOUNT MANAGEMENT VIEW -->
+            <div id="profile-view-screen" class="card">
+                <h2>Account & Profiles 👤</h2>
+                <div class="profile-card-details">
+                    <p><strong>Account Email:</strong> <span id="acc-email-val" style="color: #5E17EB;">-</span></p>
+                    <p><strong>Active Student Profile:</strong> <span id="active-profile-val" style="color: #FF5757; font-weight: bold;">-</span></p>
+                    <p><strong>Level:</strong> Primary School English (KSSR)</p>
+                </div>
+
+                <button class="action-btn" style="background-color: var(--primary-purple); box-shadow: 0 4px 0 #8d5cc4; width: 100%; margin-bottom: 15px;" onclick="playClickSound(); showScreen('profile-selection-screen')">Switch / Add Profiles 🔄</button>
+                
+                <div style="background: #FFF9C4; padding: 15px; border-radius: 15px; border: 2px dashed #FBC02D; text-align: left; margin-bottom: 15px;">
+                    <h3 style="color: #D35400; font-size: 1.1rem; margin-bottom: 8px;">🔐 Change Password</h3>
+                    <div class="input-group" style="margin: 10px 0;">
+                        <label for="current-password-input">Current Password</label>
+                        <input type="password" id="current-password-input" class="form-input" placeholder="Enter current password">
+                    </div>
+                    <div class="input-group" style="margin: 10px 0;">
+                        <label for="new-password-input">New Password (Min. 6 characters)</label>
+                        <input type="password" id="new-password-input" class="form-input" placeholder="Enter new password">
+                    </div>
+                    <button class="action-btn" style="background-color: #E67E22; box-shadow: 0 4px 0 #B9770E; width: 100%; margin-top: 5px;" onclick="playClickSound(); handlePasswordChange()">Update Password 🔑</button>
+                </div>
+
+                <button class="action-btn home-btn" style="width: 100%; margin: 0;" onclick="playClickSound(); navigateTo('home-screen')">Back to Home 🏠</button>
+            </div>
+
+            <!-- 6. SCORES HISTORY SCREEN -->
+            <div id="scores-screen" class="card">
+                <h2 style="color: #333;">🏆 Quiz Attempt History</h2>
+                <p style="color: #666; margin-top: 5px;">Records of every quiz session completed!</p>
+                
+                <div class="table-container">
+                    <table class="record-table">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Topic</th>
+                                <th>Score (%)</th>
+                                <th>Date & Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="score-records-body">
+                            <!-- Loaded via JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <button class="action-btn home-btn" onclick="playClickSound(); navigateTo('home-screen')">Back to Home 🏠</button>
+                <button class="action-btn clear-btn" onclick="playClickSound(); clearHistory()">Clear History 🗑️</button>
+            </div>
+
+            <!-- 7. QUIZ SCREEN (STANDARD MULTIPLE CHOICE) -->
+            <div id="quiz-screen" class="card">
+                <div class="quiz-header">
+                    <span id="topic-title">Topic</span>
+                    <span>Question: <span id="question-num">1</span>/<span id="total-q-num">10</span></span>
+                    <span>Score: <span id="current-score">0</span></span>
+                </div>
+
+                <div id="question-text" class="question-box">
+                    Question content goes here...
+                </div>
+
+                <div id="options-container" class="options-grid">
+                    <!-- Option buttons -->
+                </div>
+
+                <div class="quiz-action-container">
+                    <button id="next-btn" class="action-btn" style="display:none;" onclick="playClickSound(); nextQuestion()">Next Question ➔</button>
+                    <button class="action-btn home-btn" onclick="playClickSound(); confirmBackToHome()">Home 🏠</button>
+                </div>
+            </div>
+
+            <!-- 7B. SPELLING QUIZ SCREEN (DRAG & DROP LETTERS) -->
+            <div id="spelling-quiz-screen" class="card">
+                <div class="quiz-header">
+                    <span>SPELLING</span>
+                    <span>Question: <span id="spelling-question-num">1</span>/<span id="spelling-total-q-num">10</span></span>
+                    <span>Score: <span id="spelling-current-score">0</span></span>
+                </div>
+
+                <div class="spelling-img-container">
+                    <img id="spelling-img" src="" alt="Spelling Object">
+                </div>
+
+                <button class="audio-btn" onclick="playSpellingAudio()">🔊 Hear Word</button>
+
+                <p style="font-weight: 700; color: #555; margin-bottom: 5px;">Drag or tap letters into the boxes below:</p>
+                
+                <!-- Huruf Kosong Tempat Masuk -->
+                <div id="slots-container" class="slots-container"></div>
+
+                <!-- Pilihan Huruf di Bawah -->
+                <div id="letter-bank" class="bank-container"></div>
+
+                <div class="quiz-action-container" style="margin-top: 20px;">
+                    <button id="spelling-next-btn" class="action-btn" style="display:none;" onclick="playClickSound(); nextSpellingQuestion()">Next Word ➔</button>
+                    <button class="action-btn home-btn" onclick="playClickSound(); confirmBackToHome()">Home 🏠</button>
+                </div>
+            </div>
+
+            <!-- 7C. BUILD THE SENTENCE QUIZ SCREEN -->
+            <div id="sentence-quiz-screen" class="card">
+                <div class="quiz-header">
+                    <span>BUILD THE SENTENCE</span>
+                    <span>Question: <span id="sentence-question-num">1</span>/<span id="sentence-total-q-num">10</span></span>
+                    <span>Score: <span id="sentence-current-score">0</span></span>
+                </div>
+
+                <p style="font-weight: 700; color: #555; margin-bottom: 5px;">Drag or tap words below to arrange the correct sentence:</p>
+
+                <!-- Tempat Susunan Ayat -->
+                <div id="sentence-drop-area" class="sentence-drop-area"></div>
+
+                <!-- Pilihan Perkataan Secara Rawak -->
+                <div id="sentence-word-bank" class="bank-container"></div>
+
+                <!-- Paparan Jawapan Betul Jika Salah -->
+                <div id="sentence-correct-answer" class="correct-answer-box"></div>
+
+                <div class="quiz-action-container" style="margin-top: 15px;">
+                    <button id="sentence-check-btn" class="action-btn" style="background-color: var(--primary-green); box-shadow: 0 4px 0 #5aa33d;" onclick="playClickSound(); checkSentenceAnswer()">Check Answer ✔️</button>
+                    <button id="sentence-next-btn" class="action-btn" style="display:none;" onclick="playClickSound(); nextSentenceQuestion()">Next Question ➔</button>
+                    <button class="action-btn home-btn" onclick="playClickSound(); confirmBackToHome()">Home 🏠</button>
+                </div>
+            </div>
+
+            <!-- 8. RESULT SCREEN -->
+            <div id="result-screen" class="card">
+                <h2>Awesome Job! 🎉</h2>
+                <p>You have completed the quiz!</p>
+                <div class="result-score" id="final-score">0%</div>
+                <div class="completion-time" id="completion-time">📅 Completed on: -</div>
+                <p id="feedback-message" style="font-weight: 700; color: #555;"></p>
+                <br>
+                <button class="action-btn home-btn" style="display:inline-block;" onclick="playClickSound(); navigateTo('home-screen')">Back to Menu 🏠</button>
+            </div>
+
+        </div>
     </div>
 
+    <!-- FIREBASE SDKs -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { 
-            getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, 
-            signOut, onAuthStateChanged, sendEmailVerification 
-        } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-        import { getDatabase, ref, set, get, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+            getAuth, 
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword, 
+            signOut, 
+            onAuthStateChanged,
+            EmailAuthProvider,
+            reauthenticateWithCredential,
+            updatePassword
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { 
+            getDatabase, 
+            ref, 
+            set, 
+            push, 
+            get, 
+            child, 
+            remove 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAgUl-DSLAGA4pRvmKTacvowO4E0OEXo5w",
@@ -218,202 +1092,989 @@
             messagingSenderId: "890026579019",
             appId: "1:890026579019:web:200fd135537b9ea2f7a9ce"
         };
-
-        const APP_URL = "https://bijakdigital21-lang.github.io/grammarhub/";
-
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getDatabase(app);
 
-        const REQUIRE_EMAIL_VERIFICATION = false; 
-        let isRegistering = false;
+        window.currentUserAuth = null;
+        window.activeProfile = "";
+        window.userProfiles = [];
 
-        const views = {
-            loading: document.getElementById('loading-screen'),
-            auth: document.getElementById('auth-container'),
-            expired: document.getElementById('expired-container'),
-            verify: document.getElementById('verify-container')
-        };
-        
-        const forms = {
-            login: document.getElementById('login-form'),
-            register: document.getElementById('register-form')
-        };
-
-        const msgBox = document.getElementById('auth-messages');
-
-        function showView(viewName) {
-            Object.values(views).forEach(v => v.classList.add('hidden'));
-            if (views[viewName]) {
-                views[viewName].classList.remove('hidden');
-            }
-        }
-
-        function showMessage(msg, type = 'error') {
-            msgBox.innerHTML = `<div class="message ${type}">${msg}</div>`;
-            msgBox.classList.remove('hidden');
-        }
-
-        function clearMessage() {
-            msgBox.innerHTML = '';
-        }
-
-        function setButtonLoading(btn, isLoading, text) {
-            btn.disabled = isLoading;
-            btn.innerText = isLoading ? 'PROCESSING...' : text;
-        }
-
-        const openRegisterForm = () => { 
-            forms.login.classList.add('hidden'); 
-            forms.register.classList.remove('hidden'); 
-            clearMessage(); 
-        };
-
-        document.getElementById('show-register').onclick = openRegisterForm;
-        document.getElementById('btn-register-now').onclick = openRegisterForm;
-        document.getElementById('show-login').onclick = () => { forms.register.classList.add('hidden'); forms.login.classList.remove('hidden'); clearMessage(); };
-
-        const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-        // Register Form
-        forms.register.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            clearMessage();
-            
-            const name = document.getElementById('reg-name').value.trim();
-            const email = document.getElementById('reg-email').value.trim().toLowerCase();
-            const password = document.getElementById('reg-password').value;
-            const confirm = document.getElementById('reg-confirm').value;
-            const btn = document.getElementById('register-btn');
-
-            if (!name || name.length < 2) return showMessage("Please enter your full name.");
-            if (!email || !isValidEmail(email)) return showMessage("Please enter a valid email address.");
-            if (password.length < 6) return showMessage("Password must be at least 6 characters.");
-            if (password !== confirm) return showMessage("Passwords do not match.");
-
-            setButtonLoading(btn, true, 'CREATE FREE ACCOUNT');
-            isRegistering = true;
-
-            try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-                
-                const now = Date.now();
-                const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
-                
-                const userData = {
-                    name: name,
-                    email: email,
-                    status: "trial",
-                    plan: "free_trial",
-                    trialStart: now,
-                    trialEnd: now + sevenDaysMs,
-                    createdAt: now
-                };
-
-                await set(ref(db, `users/${user.uid}`), userData);
-                
-                if (REQUIRE_EMAIL_VERIFICATION) {
-                    await sendEmailVerification(user);
-                }
-
-                showMessage("Account created! Redirecting to app...", "success");
-                isRegistering = false;
-                await checkUserStatus(user);
-
-            } catch (error) {
-                isRegistering = false;
-                if (error.code === 'auth/email-already-in-use') {
-                    showMessage("This email is already registered. Please login instead.");
-                } else {
-                    showMessage(error.message);
-                }
-                setButtonLoading(btn, false, 'CREATE FREE ACCOUNT');
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                window.currentUserAuth = user;
+                document.getElementById("nav-menu").style.display = "flex";
+                document.getElementById("acc-email-val").innerText = user.email;
+                await fetchProfiles();
+            } else {
+                window.currentUserAuth = null;
+                window.activeProfile = "";
+                document.getElementById("nav-menu").style.display = "none";
+                showScreen("register-screen");
             }
         });
 
-        // Login Form
-        forms.login.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            clearMessage();
-            
-            const email = document.getElementById('login-email').value.trim().toLowerCase();
-            const password = document.getElementById('login-password').value;
-            const btn = document.getElementById('login-btn');
+        // FUNGSI REGISTRATION BARU
+        window.handleRegister = async function() {
+            const name = document.getElementById("reg-name").value.trim();
+            const email = document.getElementById("reg-email").value.trim();
+            const password = document.getElementById("reg-password").value.trim();
 
-            if (!email) return showMessage("Please enter a valid email.");
-            if (!password) return showMessage("Please enter your password.");
-
-            setButtonLoading(btn, true, 'LOGIN');
-
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-            } catch (error) {
-                showMessage("Invalid email or password. Please try again.");
-                setButtonLoading(btn, false, 'LOGIN');
+            if (!name || !email || !password) {
+                alert("Please fill in all registration fields.");
+                return;
             }
-        });
 
-        const handleLogout = async () => {
-            await signOut(auth);
-            showView('auth');
-            forms.login.classList.remove('hidden');
-            forms.register.classList.add('hidden');
-            document.getElementById('login-form').reset();
-            document.getElementById('register-form').reset();
-        };
-
-        document.getElementById('logout-btn-expired').onclick = handleLogout;
-        document.getElementById('logout-btn-verify').onclick = handleLogout;
-        document.getElementById('reload-btn').onclick = () => window.location.reload();
-
-        async function checkUserStatus(user) {
-            if (REQUIRE_EMAIL_VERIFICATION && !user.emailVerified) {
-                showView('verify');
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
                 return;
             }
 
             try {
-                const snapshot = await get(ref(db, `users/${user.uid}`));
-                if (snapshot.exists()) {
-                    const data = snapshot.val();
-                    const now = Date.now();
+                // 1. Cipta user baru dekat Firebase Auth
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
 
-                    if (data.status === 'suspended') {
-                        await signOut(auth);
-                        alert("Your account has been suspended. Please contact support.");
-                        return;
-                    }
+                // 2. Tambah profil pertama di Realtime Database secara automatik
+                const newProfileRef = push(ref(db, `users/${user.uid}/profiles`));
+                await set(newProfileRef, name);
 
-                    if (now >= data.trialEnd && data.plan === 'free_trial') {
-                        showView('expired');
-                        update(ref(db, `users/${user.uid}`), { status: 'expired' });
-                    } else {
-                        window.location.href = APP_URL;
-                    }
-                } else {
-                    if (!isRegistering) {
-                        await signOut(auth);
-                        showView('auth');
-                    }
-                }
+                alert("Registration successful! Welcome to Grammar Hub 🎉");
+                
+                // Clear inputs
+                document.getElementById("reg-name").value = "";
+                document.getElementById("reg-email").value = "";
+                document.getElementById("reg-password").value = "";
+
             } catch (error) {
-                console.error("DB Error:", error);
-                alert("Unable to connect to database. Please check rules or connection.");
+                alert("Registration failed: " + error.message);
+            }
+        };
+
+        window.handleLogin = async function() {
+            const email = document.getElementById("login-email").value.trim();
+            const password = document.getElementById("login-password").value.trim();
+
+            if (!email || !password) {
+                alert("Please fill in both email and password.");
+                return;
+            }
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                alert("Login failed: " + error.message);
+            }
+        };
+
+        window.logout = async function() {
+            closeSidebar();
+            try {
+                await signOut(auth);
+                alert("You have logged out successfully.");
+            } catch (error) {
+                alert("Error logging out: " + error.message);
+            }
+        };
+
+        window.handlePasswordChange = async function() {
+            const currentPass = document.getElementById("current-password-input").value;
+            const newPass = document.getElementById("new-password-input").value;
+
+            if (!currentPass || !newPass) {
+                alert("Please fill in both current and new password fields.");
+                return;
+            }
+
+            if (newPass.length < 6) {
+                alert("New password must be at least 6 characters long.");
+                return;
+            }
+
+            const user = auth.currentUser;
+            if (!user) {
+                alert("No user signed in.");
+                return;
+            }
+
+            try {
+                const credential = EmailAuthProvider.credential(user.email, currentPass);
+                await reauthenticateWithCredential(user, credential);
+                await updatePassword(user, newPass);
+                
+                alert("Password updated successfully! 🎉");
+                document.getElementById("current-password-input").value = "";
+                document.getElementById("new-password-input").value = "";
+            } catch (error) {
+                alert("Failed to update password: " + error.message);
+            }
+        };
+
+        async function fetchProfiles() {
+            if (!window.currentUserAuth) return;
+            const uid = window.currentUserAuth.uid;
+            const dbRef = ref(db);
+            
+            try {
+                const snapshot = await get(child(dbRef, `users/${uid}/profiles`));
+                const listContainer = document.getElementById("profile-selection-list");
+                listContainer.innerHTML = "";
+
+                if (snapshot.exists()) {
+                    window.userProfiles = Object.values(snapshot.val());
+                    window.userProfiles.forEach(profName => {
+                        const btn = document.createElement("button");
+                        btn.className = "action-btn";
+                        btn.style.display = "block";
+                        btn.style.width = "100%";
+                        btn.style.margin = "8px 0";
+                        btn.innerText = `👤 ${profName}`;
+                        btn.onclick = () => selectProfile(profName);
+                        listContainer.appendChild(btn);
+                    });
+                } else {
+                    window.userProfiles = [];
+                    listContainer.innerHTML = "<p style='color:#777;'>No profiles created yet. Please create one below!</p>";
+                }
+
+                if (!window.activeProfile) {
+                    showScreen("profile-selection-screen");
+                }
+            } catch (err) {
+                console.error("Error fetching profiles:", err);
             }
         }
 
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                if (!isRegistering) {
-                    checkUserStatus(user);
+        window.addNewProfile = async function() {
+            const nameInput = document.getElementById("new-profile-name");
+            const newName = nameInput.value.trim();
+
+            if (!newName) {
+                alert("Please enter a student name.");
+                return;
+            }
+
+            if (!window.currentUserAuth) return;
+            const uid = window.currentUserAuth.uid;
+
+            try {
+                const newProfileRef = push(ref(db, `users/${uid}/profiles`));
+                await set(newProfileRef, newName);
+                nameInput.value = "";
+                await fetchProfiles();
+                selectProfile(newName);
+            } catch (err) {
+                alert("Failed to add profile: " + err.message);
+            }
+        };
+
+        function selectProfile(profileName) {
+            window.activeProfile = profileName;
+            document.getElementById("home-greeting").innerText = `Hi ${profileName}! 👋`;
+            document.getElementById("active-profile-val").innerText = profileName;
+            document.getElementById("current-badge-name").innerText = profileName;
+            showScreen("home-screen");
+        }
+
+        window.saveSessionRecord = async function(topic, scoreValue, totalQ, formattedTime) {
+            if (!window.currentUserAuth || !window.activeProfile) return;
+            const uid = window.currentUserAuth.uid;
+
+            const percentage = Math.round((scoreValue / totalQ) * 100);
+
+            const sessionData = {
+                profile: window.activeProfile,
+                topic: topic,
+                score: `${percentage}%`,
+                rawScore: `${scoreValue} / ${totalQ}`,
+                time: formattedTime,
+                timestamp: Date.now()
+            };
+
+            try {
+                const historyRef = ref(db, `users/${uid}/history`);
+                const newSessionRef = push(historyRef);
+                await set(newSessionRef, sessionData);
+            } catch (err) {
+                console.error("Failed to save score history:", err);
+            }
+        };
+
+        window.loadScoreBoard = async function() {
+            const tbody = document.getElementById("score-records-body");
+            tbody.innerHTML = "<tr><td colspan='4'>Loading history...</td></tr>";
+
+            if (!window.currentUserAuth) return;
+            const uid = window.currentUserAuth.uid;
+            const dbRef = ref(db);
+
+            try {
+                const snapshot = await get(child(dbRef, `users/${uid}/history`));
+                tbody.innerHTML = "";
+
+                if (snapshot.exists()) {
+                    const allData = Object.values(snapshot.val());
+                    const profileData = allData.filter(item => item.profile === window.activeProfile);
+
+                    if (profileData.length === 0) {
+                        tbody.innerHTML = `<tr><td colspan="4" style="color:#777; padding: 20px;">No quiz sessions recorded for ${window.activeProfile} yet!</td></tr>`;
+                        return;
+                    }
+
+                    profileData.slice().reverse().forEach((session, idx) => {
+                        const tr = document.createElement("tr");
+                        const sessionNum = profileData.length - idx;
+
+                        tr.innerHTML = `
+                            <td style="font-weight:700;">#${sessionNum}</td>
+                            <td style="text-transform: capitalize; font-weight:700;">${session.topic}</td>
+                            <td style="font-weight:700; color:#5E17EB;">${session.score}</td>
+                            <td style="font-size:0.8rem; color:#555;">${session.time}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                } else {
+                    tbody.innerHTML = `<tr><td colspan="4" style="color:#777; padding: 20px;">No quiz sessions recorded yet! Start a quiz to see your history.</td></tr>`;
                 }
-            } else {
-                showView('auth');
-                setButtonLoading(document.getElementById('login-btn'), false, 'LOGIN');
-                setButtonLoading(document.getElementById('register-btn'), false, 'CREATE FREE ACCOUNT');
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="4" style="color:red;">Error loading history.</td></tr>`;
+            }
+        };
+
+        window.clearHistory = async function() {
+            if (!confirm(`Are you sure you want to clear all history for ${window.activeProfile}?`)) return;
+
+            if (!window.currentUserAuth) return;
+            const uid = window.currentUserAuth.uid;
+
+            try {
+                const snapshot = await get(ref(db, `users/${uid}/history`));
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    for (let key in data) {
+                        if (data[key].profile === window.activeProfile) {
+                            await remove(ref(db, `users/${uid}/history/${key}`));
+                        }
+                    }
+                }
+                loadScoreBoard();
+            } catch (err) {
+                alert("Failed to clear history: " + err.message);
+            }
+        };
+    </script>
+
+    <script>
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playClickSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.08);
+        }
+
+        function playCorrectSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const now = audioCtx.currentTime;
+            const osc1 = audioCtx.createOscillator();
+            const gain1 = audioCtx.createGain();
+            osc1.type = 'triangle';
+            osc1.frequency.setValueAtTime(523.25, now); 
+            gain1.gain.setValueAtTime(0.3, now);
+            gain1.gain.linearRampToValueAtTime(0.01, now + 0.15);
+            osc1.connect(gain1);
+            gain1.connect(audioCtx.destination);
+            osc1.start(now);
+            osc1.stop(now + 0.15);
+
+            const osc2 = audioCtx.createOscillator();
+            const gain2 = audioCtx.createGain();
+            osc2.type = 'triangle';
+            osc2.frequency.setValueAtTime(659.25, now + 0.1); 
+            gain2.gain.setValueAtTime(0.3, now + 0.1);
+            gain2.gain.linearRampToValueAtTime(0.01, now + 0.3);
+            osc2.connect(gain2);
+            gain2.connect(audioCtx.destination);
+            osc2.start(now + 0.1);
+            osc2.stop(now + 0.3);
+        }
+
+        function playWrongSound() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(220, now);
+            osc.frequency.linearRampToValueAtTime(130, now + 0.25);
+            gain.gain.setValueAtTime(0.3, now);
+            gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(now + 0.25);
+        }
+
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        const lessonData = {
+            nouns: {
+                title: "Nouns",
+                desc: "<strong>Nouns</strong> are words used to name people, places, animals, or things. Pay attention to Singular (one) and Plural (more than one).",
+                examples: "<ul><li>Singular: <i>car, dog, child, tooth</i></li><li>Plural: <i>cars, dogs, children, teeth</i></li></ul>"
+            },
+            pronouns: {
+                title: "Pronouns",
+                desc: "<strong>Pronouns</strong> are words that take the place of nouns so we don't have to repeat the same noun.",
+                examples: "<ul><li>Girl/Woman: <b>She, Her</b></li><li>Boy/Man: <b>He, Him</b></li><li>Animal/Object: <b>It, Its</b></li><li>Group: <b>They, We</b></li></ul>"
+            },
+            verbs: {
+                title: "Verbs",
+                desc: "<strong>Verbs</strong> are action words. They show what someone or something is doing. Remember to check the tenses (present or past)!",
+                examples: "<ul><li>Present Tense: <i>walks, sings, flying</i></li><li>Past Tense: <i>walked, sang, caught</i></li></ul>"
+            },
+            adjectives: {
+                title: "Adjectives",
+                desc: "<strong>Adjectives</strong> describe or give more information about a noun (size, color, shape, feeling).",
+                examples: "<ul><li>Size: <i>huge, small, long</i></li><li>Taste/Feel: <i>sweet, sour, cold, heavy</i></li><li>Comparison: <i>fast ➔ faster ➔ fastest</i></li></ul>"
+            },
+            prepositions: {
+                title: "Prepositions",
+                desc: "<strong>Prepositions</strong> tell us the position or location of something, or when something happens.",
+                examples: "<ul><li>Position: <i>under, on, inside, between, behind</i></li><li>Time: <i>at 7.00 a.m., in July, on Sunday</i></li></ul>"
+            },
+            conjunctions: {
+                title: "Conjunctions",
+                desc: "<strong>Conjunctions</strong> are joining words that connect words, phrases, or sentences together.",
+                examples: "<ul><li><b>And:</b> joins similar ideas.</li><li><b>But:</b> joins opposite ideas.</li><li><b>Because:</b> shows a reason.</li><li><b>So:</b> shows a result.</li></ul>"
+            },
+            articles: {
+                title: "Articles (A, An, The)",
+                desc: "<strong>Articles</strong> are words that define a noun as specific or unspecific. Use 'a' before consonant sounds, 'an' before vowel sounds (a, e, i, o, u), and 'the' for specific things.",
+                examples: "<ul><li><b>A:</b> <i>a cat, a book, a university</i></li><li><b>An:</b> <i>an apple, an umbrella, an hour</i></li><li><b>The:</b> <i>the sun, the tallest boy</i></li></ul>"
+            },
+            presentTense: {
+                title: "Simple Present Tense",
+                desc: "<strong>Simple Present Tense</strong> is used to talk about habits, general truths, or things that happen regularly.",
+                examples: "<ul><li>Singular subject (He/She/It/Ali): Add <b>-s</b> or <b>-es</b> (e.g., <i>eats, goes</i>).</li><li>Plural subject (I/You/We/They): Use base verb (e.g., <i>eat, go</i>).</li></ul>"
+            },
+            pastTense: {
+                title: "Simple Past Tense",
+                desc: "<strong>Simple Past Tense</strong> is used for actions that happened and finished in the past.",
+                examples: "<ul><li>Regular verbs: Add <b>-ed</b> (e.g., <i>walk ➔ walked</i>).</li><li>Irregular verbs: Change form completely (e.g., <i>go ➔ went, eat ➔ ate</i>).</li></ul>"
+            },
+            singularPlural: {
+                title: "Singular and Plural",
+                desc: "<strong>Singular</strong> means only one person, place, or thing. <strong>Plural</strong> means more than one.",
+                examples: "<ul><li>Regular: add <b>-s</b> (<i>cat ➔ cats</i>) or <b>-es</b> (<i>box ➔ boxes</i>).</li><li>Irregular: <i>man ➔ men, child ➔ children, foot ➔ feet</i>.</li></ul>"
+            },
+            demonstratives: {
+                title: "This, That, These, Those",
+                desc: "<strong>Demonstrative pronouns</strong> point to specific things near or far away.",
+                examples: "<ul><li>Near (Singular): <b>This</b> (<i>This is my pencil</i>)</li><li>Far (Singular): <b>That</b> (<i>That is a star</i>)</li><li>Near (Plural): <b>These</b> (<i>These are my shoes</i>)</li><li>Far (Plural): <b>Those</b> (<i>Those are birds</i>)</li></ul>"
+            },
+            spelling: {
+                title: "Spelling Challenge",
+                desc: "<strong>Spelling</strong> helps you write words correctly! Look at the picture, listen to the audio pronunciation, and drag or tap the letters into the correct boxes to spell the word.",
+                examples: "<ul><li>Example: Picture of a cat ➔ Listen to 'CAT' ➔ Arrange letters <b>C - A - T</b>.</li></ul>"
+            },
+            buildSentence: {
+                title: "Build the Sentence",
+                desc: "<strong>Build the Sentence</strong> teaches you how to construct correct English sentences. Drag or tap the scrambled words to arrange them into a meaningful sentence.",
+                examples: "<ul><li>Scrambled: <i>cat / The / sleeping / is</i></li><li>Correct: <b>The cat is sleeping.</b></li></ul>"
+            }
+        };
+
+        const questionBank = {
+            nouns: [
+                { q: "My father drives a new ________ to work.", options: ["caring", "car", "cared", "cars"], answer: 1 },
+                { q: "There are three ________ in the cage.", options: ["bird", "birds", "birding", "birded"], answer: 1 },
+                { q: "Encik Ahmad is a hardworking ________.", options: ["teaching", "teacher", "taught", "teachers"], answer: 1 },
+                { q: "I need to brush my ________ every night.", options: ["tooths", "teethes", "tooth", "teeth"], answer: 3 },
+                { q: "The sweet ________ smells wonderful in the garden.", options: ["flowering", "flower", "flowered", "flowers"], answer: 1 }
+            ],
+            pronouns: [
+                { q: "Aina is hungry. ________ wants to eat a burger.", options: ["He", "She", "It", "They"], answer: 1 },
+                { q: "Ali and Adam are brothers. ________ like to play football.", options: ["We", "They", "He", "You"], answer: 1 },
+                { q: "My name is Danial. ________ am eight years old.", options: ["I", "You", "We", "He"], answer: 0 },
+                { q: "The cat is sleeping because ________ is tired.", options: ["she", "he", "it", "they"], answer: 2 },
+                { q: "We should look after ________ health by eating nutritious food.", options: ["our", "ours", "us", "we"], answer: 0 }
+            ],
+            verbs: [
+                { q: "The pupils ________ to school every morning.", options: ["walk", "walks", "walking", "walked"], answer: 0 },
+                { q: "Siti ________ a song gracefully yesterday.", options: ["sing", "sings", "sang", "singing"], answer: 2 },
+                { q: "Listen! The baby is ________ in the bedroom.", options: ["crying", "cried", "cries", "cry"], answer: 0 },
+                { q: "My uncle ________ a big fish last weekend.", options: ["catch", "catches", "caught", "catching"], answer: 2 },
+                { q: "He ________ a cup of hot tea just now.", options: ["drink", "drinks", "drank", "drinking"], answer: 2 }
+            ],
+            adjectives: [
+                { q: "An elephant is a ________ animal.", options: ["huge", "small", "tiny", "short"], answer: 0 },
+                { q: "Ice cream is ________ and sweet.", options: ["hot", "cold", "spicy", "warm"], answer: 1 },
+                { q: "A cheetah is the ________ land animal.", options: ["fast", "faster", "fastest", "more fast"], answer: 2 },
+                { q: "This knife is very ________. Be careful!", options: ["sharp", "blunt", "soft", "smooth"], answer: 0 },
+                { q: "The deep well contains ________ water that is safe to drink.", options: ["shallow", "deep", "fresh", "stale"], answer: 2 }
+            ],
+            prepositions: [
+                { q: "The cat is sleeping ________ the table.", options: ["under", "in", "above", "between"], answer: 0 },
+                { q: "We go to school ________ 7.00 a.m.", options: ["on", "at", "in", "by"], answer: 1 },
+                { q: "Put the apples ________ the basket.", options: ["inside", "on", "over", "between"], answer: 0 },
+                { q: "The sun shines ________ our heads at noon.", options: ["under", "above", "in", "behind"], answer: 1 },
+                { q: "She divided the chocolate cake equally ________ her three friends.", options: ["between", "among", "in", "with"], answer: 1 }
+            ],
+            conjunctions: [
+                { q: "I like apples ________ oranges.", options: ["and", "but", "or", "so"], answer: 0 },
+                { q: "He is rich ________ he is not happy.", options: ["and", "but", "so", "or"], answer: 1 },
+                { q: "Do you want tea ________ coffee?", options: ["and", "but", "or", "so"], answer: 2 },
+                { q: "She stayed home ________ she was feeling sick.", options: ["because", "but", "or", "and"], answer: 0 },
+                { q: "He dropped the glass cup, ________ it broke into pieces.", options: ["because", "so", "but", "or"], answer: 1 }
+            ],
+            articles: [
+                { q: "She wants to eat ________ apple.", options: ["a", "an", "the", "-"], answer: 1 },
+                { q: "I saw ________ cat in our backyard.", options: ["a", "an", "the", "-"], answer: 0 },
+                { q: "________ sun rises in the east.", options: ["A", "An", "The", "-"], answer: 2 },
+                { q: "He bought ________ umbrella yesterday.", options: ["a", "an", "the", "-"], answer: 1 },
+                { q: "There is ________ fly in my soup!", options: ["a", "an", "the", "-"], answer: 0 }
+            ],
+            presentTense: [
+                { q: "Cats ________ milk.", options: ["drink", "drinks", "drinking", "drank"], answer: 0 },
+                { q: "He ________ to school every day.", options: ["cycle", "cycles", "cycling", "cycled"], answer: 1 },
+                { q: "I ________ English grammar.", options: ["love", "loves", "loving", "loved"], answer: 0 },
+                { q: "My mother ________ delicious food.", options: ["cook", "cooks", "cooking", "cooked"], answer: 1 },
+                { q: "She always ________ the truth.", options: ["tell", "telling", "tells", "told"], answer: 2 }
+            ],
+            pastTense: [
+                { q: "Yesterday, I ________ to the library.", options: ["go", "goes", "went", "going"], answer: 2 },
+                { q: "She ________ a letter last night.", options: ["write", "writes", "wrote", "writing"], answer: 2 },
+                { q: "They ________ football last weekend.", options: ["play", "plays", "played", "playing"], answer: 2 },
+                { q: "My father ________ a new car last month.", options: ["buy", "buys", "bought", "buying"], answer: 2 },
+                { q: "We ________ English grammar last semester.", options: ["learn", "learned", "learns", "learning"], answer: 1 }
+            ],
+            singularPlural: [
+                { q: "Plural form of 'child' is ________.", options: ["childs", "children", "childes", "child"], answer: 1 },
+                { q: "Plural form of 'box' is ________.", options: ["boxs", "boxes", "boxen", "box"], answer: 1 },
+                { q: "Singular form of 'teeth' is ________.", options: ["tooth", "teeths", "toot", "teeth"], answer: 0 },
+                { q: "Plural form of 'baby' is ________.", options: ["babys", "babies", "baby", "babes"], answer: 1 },
+                { q: "Plural form of 'deer' is ________.", options: ["deers", "deer", "deeren", "deeres"], answer: 1 }
+            ],
+            demonstratives: [
+                { q: "________ is my apple here in my hand.", options: ["This", "That", "These", "Those"], answer: 0 },
+                { q: "Look at ________ stars high up in the sky.", options: ["this", "that", "these", "those"], answer: 3 },
+                { q: "________ books on this desk belong to me.", options: ["This", "That", "These", "Those"], answer: 2 },
+                { q: "Is ________ bird far away an eagle?", options: ["this", "that", "these", "those"], answer: 1 },
+                { q: "Can you explain ________ rule to me again?", options: ["this", "that", "these", "those"], answer: 0 }
+            ]
+        };
+
+        const spellingBank = [
+            { word: "CAT", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300" },
+            { word: "DOG", img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300" },
+            { word: "BOOK", img: "https://static.vecteezy.com/system/resources/previews/017/222/245/original/3d-stack-of-books-3d-rendering-illustration-free-png.png" },
+            { word: "APPLE", img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=300" },
+            { word: "FISH", img: "https://images.unsplash.com/photo-1524704654690-b56c05c78a00?w=300" },
+            { word: "TREE", img: "https://cdn.pixabay.com/photo/2022/05/10/11/12/tree-7186835_1280.jpg" },
+            { word: "HAND", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6SOM7n4gFMQYI_cQTUnoprc0RM8beiEt9vzF7pTyHYw&s=10" }
+        ];
+
+        const sentenceBank = [
+            "The cat is sleeping on the mat.",
+            "She likes to eat fresh apples.",
+            "They are playing football in the park.",
+            "My father drives a blue car.",
+            "The sun rises in the east.",
+            "We go to school every morning.",
+            "Always turn off the lights when you leave."
+        ];
+
+        let currentTopic = "";
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let canAnswer = true;
+        let selectedQuestionCount = 10;
+
+        let spellingQuestions = [];
+        let spellingIndex = 0;
+        let spellingScore = 0;
+        let userFilledLetters = [];
+        let availableLetters = [];
+
+        let sentenceQuestions = [];
+        let sentenceIndex = 0;
+        let sentenceScore = 0;
+        let userArrangedWords = [];
+        let availableWords = [];
+
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById("sidebar");
+            const mobileBtn = document.getElementById("mobile-toggle-btn");
+            
+            if (sidebar.classList.contains("open")) {
+                if (!sidebar.contains(event.target) && !mobileBtn.contains(event.target)) {
+                    closeSidebar();
+                }
             }
         });
+
+        function closeSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            if (sidebar) {
+                sidebar.classList.remove("open");
+            }
+        }
+
+        function toggleSidebar(event) {
+            if(event) event.stopPropagation();
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+
+        function navigateTo(screenId, element = null) {
+            closeSidebar();
+
+            if (element) {
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                element.classList.add('active');
+            }
+            if (screenId === 'scores-screen') {
+                window.loadScoreBoard();
+            }
+            showScreen(screenId);
+        }
+
+        function confirmBackToHome() {
+            if (confirm("Are you sure you want to exit the quiz and return to Home? Your current score for this quiz will not be saved.")) {
+                navigateTo('home-screen');
+            }
+        }
+
+        function openLesson(topic) {
+            closeSidebar();
+            currentTopic = topic;
+            const lesson = lessonData[topic];
+
+            document.getElementById("lesson-title").innerText = lesson.title;
+            document.getElementById("lesson-desc").innerHTML = lesson.desc;
+            document.getElementById("lesson-examples").innerHTML = lesson.examples;
+
+            showScreen("lesson-screen");
+        }
+
+        function proceedToQuestionCount() {
+            closeSidebar();
+            showScreen("count-selection-screen");
+        }
+
+        function handleLockedCount(count) {
+            if (count > 5) {
+                alert('Upgrade to lifetime access and unlock more question.');
+                return;
+            }
+            startQuizWithCount(count);
+        }
+
+        function startQuizWithCount(count) {
+            closeSidebar();
+            selectedQuestionCount = count;
+            if (currentTopic === 'spelling') {
+                startSpellingQuiz(count);
+            } else if (currentTopic === 'buildSentence') {
+                startBuildSentenceQuiz(count);
+            } else {
+                startQuiz(currentTopic, selectedQuestionCount);
+            }
+        }
+
+        function getFormattedDateTime() {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-GB'); 
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); 
+            return `${dateStr}, ${timeStr}`;
+        }
+
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex != 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        function startQuiz(topic, count) {
+            closeSidebar();
+            currentTopic = topic;
+            
+            let extendedBank = [];
+            while (extendedBank.length < count) {
+                extendedBank = extendedBank.concat(shuffle([...questionBank[topic]]));
+            }
+            
+            currentQuestions = extendedBank.slice(0, count);
+            currentQuestionIndex = 0;
+            score = 0;
+
+            document.getElementById('topic-title').innerText = topic.toUpperCase();
+            document.getElementById('current-score').innerText = score;
+            document.getElementById('total-q-num').innerText = count;
+
+            showScreen('quiz-screen');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            canAnswer = true;
+            document.getElementById('next-btn').style.display = 'none';
+            
+            const qData = currentQuestions[currentQuestionIndex];
+            document.getElementById('question-num').innerText = currentQuestionIndex + 1;
+            document.getElementById('question-text').innerText = qData.q;
+
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIndex, btnElement) {
+            if (!canAnswer) return;
+            canAnswer = false;
+
+            const qData = currentQuestions[currentQuestionIndex];
+            const allBtns = document.querySelectorAll('.option-btn');
+
+            if (selectedIndex === qData.answer) {
+                btnElement.classList.add('correct');
+                playCorrectSound();
+                score++;
+                document.getElementById('current-score').innerText = score;
+            } else {
+                btnElement.classList.add('wrong');
+                playWrongSound();
+                allBtns[qData.answer].classList.add('correct');
+            }
+
+            document.getElementById('next-btn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function startSpellingQuiz(count) {
+            let extended = [];
+            while (extended.length < count) {
+                extended = extended.concat(shuffle([...spellingBank]));
+            }
+            spellingQuestions = extended.slice(0, count);
+            spellingIndex = 0;
+            spellingScore = 0;
+
+            document.getElementById('spelling-total-q-num').innerText = count;
+            document.getElementById('spelling-current-score').innerText = spellingScore;
+
+            showScreen('spelling-quiz-screen');
+            loadSpellingQuestion();
+        }
+
+        function loadSpellingQuestion() {
+            document.getElementById('spelling-next-btn').style.display = 'none';
+            const currentItem = spellingQuestions[spellingIndex];
+
+            document.getElementById('spelling-question-num').innerText = spellingIndex + 1;
+            document.getElementById('spelling-img').src = currentItem.img;
+
+            speakWord(currentItem.word);
+
+            const wordLength = currentItem.word.length;
+            userFilledLetters = new Array(wordLength).fill(null);
+
+            let lettersArr = currentItem.word.split('');
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            while (lettersArr.length < wordLength + 3) {
+                let randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+                lettersArr.push(randomLetter);
+            }
+            availableLetters = shuffle(lettersArr).map((letter, idx) => ({ id: idx, letter: letter, used: false }));
+
+            renderSpellingBoard(currentItem.word);
+        }
+
+        function playSpellingAudio() {
+            const currentItem = spellingQuestions[spellingIndex];
+            speakWord(currentItem.word);
+        }
+
+        function renderSpellingBoard(targetWord) {
+            const slotsContainer = document.getElementById('slots-container');
+            slotsContainer.innerHTML = '';
+            userFilledLetters.forEach((val, index) => {
+                const slot = document.createElement('div');
+                slot.className = `letter-slot ${val ? 'filled' : ''}`;
+                slot.innerText = val ? val.letter : '_';
+                slot.onclick = () => {
+                    if (val !== null) {
+                        availableLetters[val.bankIndex].used = false;
+                        userFilledLetters[index] = null;
+                        renderSpellingBoard(targetWord);
+                    }
+                };
+                slotsContainer.appendChild(slot);
+            });
+
+            const bankContainer = document.getElementById('letter-bank');
+            bankContainer.innerHTML = '';
+            availableLetters.forEach((item, bankIdx) => {
+                const lBtn = document.createElement('div');
+                lBtn.className = `draggable-letter ${item.used ? 'used' : ''}`;
+                lBtn.innerText = item.letter;
+                
+                lBtn.onclick = () => {
+                    if (!item.used) {
+                        const emptyIndex = userFilledLetters.indexOf(null);
+                        if (emptyIndex !== -1) {
+                            userFilledLetters[emptyIndex] = { letter: item.letter, bankIndex: bankIdx };
+                            availableLetters[bankIdx].used = true;
+                            renderSpellingBoard(targetWord);
+                            checkSpellingCompletion(targetWord);
+                        }
+                    }
+                };
+
+                lBtn.draggable = !item.used;
+                lBtn.ondragstart = (e) => {
+                    e.dataTransfer.setData('text/plain', JSON.stringify({ letter: item.letter, bankIndex: bankIdx }));
+                };
+
+                bankContainer.appendChild(lBtn);
+            });
+
+            const slots = slotsContainer.children;
+            for(let i=0; i<slots.length; i++) {
+                slots[i].ondragover = (e) => e.preventDefault();
+                slots[i].ondrop = (e) => {
+                    e.preventDefault();
+                    const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                    if (userFilledLetters[i] === null) {
+                        userFilledLetters[i] = { letter: data.letter, bankIndex: data.bankIndex };
+                        availableLetters[data.bankIndex].used = true;
+                        renderSpellingBoard(targetWord);
+                        checkSpellingCompletion(targetWord);
+                    }
+                };
+            }
+        }
+
+        function checkSpellingCompletion(targetWord) {
+            if (!userFilledLetters.includes(null)) {
+                const formedWord = userFilledLetters.map(item => item.letter).join('');
+                if (formedWord === targetWord) {
+                    playCorrectSound();
+                    spellingScore++;
+                    document.getElementById('spelling-current-score').innerText = spellingScore;
+                    
+                    speakWord("Great job! Correct!");
+                    document.getElementById('spelling-next-btn').style.display = 'block';
+                } else {
+                    playWrongSound();
+                    speakWord("Try again!");
+                }
+            }
+        }
+
+        function nextSpellingQuestion() {
+            spellingIndex++;
+            if (spellingIndex < spellingQuestions.length) {
+                loadSpellingQuestion();
+            } else {
+                score = spellingScore;
+                selectedQuestionCount = spellingQuestions.length;
+                showResults();
+            }
+        }
+
+        function startBuildSentenceQuiz(count) {
+            let extended = [];
+            while (extended.length < count) {
+                extended = extended.concat(shuffle([...sentenceBank]));
+            }
+            sentenceQuestions = extended.slice(0, count);
+            sentenceIndex = 0;
+            sentenceScore = 0;
+
+            document.getElementById('sentence-total-q-num').innerText = count;
+            document.getElementById('sentence-current-score').innerText = sentenceScore;
+
+            showScreen('sentence-quiz-screen');
+            loadSentenceQuestion();
+        }
+
+        function loadSentenceQuestion() {
+            canAnswer = true;
+            document.getElementById('sentence-check-btn').style.display = 'inline-block';
+            document.getElementById('sentence-next-btn').style.display = 'none';
+            
+            const correctBox = document.getElementById('sentence-correct-answer');
+            correctBox.style.display = 'none';
+            correctBox.innerHTML = '';
+
+            const targetSentence = sentenceQuestions[sentenceIndex];
+            document.getElementById('sentence-question-num').innerText = sentenceIndex + 1;
+
+            const words = targetSentence.split(" ");
+            userArrangedWords = [];
+            
+            availableWords = shuffle([...words]).map((w, idx) => ({
+                id: idx,
+                word: w,
+                used: false
+            }));
+
+            renderSentenceBoard();
+        }
+
+        function renderSentenceBoard() {
+            const dropArea = document.getElementById('sentence-drop-area');
+            dropArea.innerHTML = '';
+
+            userArrangedWords.forEach((item, arrIdx) => {
+                const chip = document.createElement('div');
+                chip.className = 'word-chip';
+                chip.innerText = item.word;
+                chip.onclick = () => {
+                    if (!canAnswer) return;
+                    availableWords[item.bankIndex].used = false;
+                    userArrangedWords.splice(arrIdx, 1);
+                    renderSentenceBoard();
+                };
+                dropArea.appendChild(chip);
+            });
+
+            const wordBank = document.getElementById('sentence-word-bank');
+            wordBank.innerHTML = '';
+
+            availableWords.forEach((item, bankIdx) => {
+                const chip = document.createElement('div');
+                chip.className = `word-chip ${item.used ? 'used' : ''}`;
+                chip.innerText = item.word;
+
+                chip.onclick = () => {
+                    if (!canAnswer || item.used) return;
+                    userArrangedWords.push({ word: item.word, bankIndex: bankIdx });
+                    availableWords[bankIdx].used = true;
+                    renderSentenceBoard();
+                };
+
+                chip.draggable = !item.used && canAnswer;
+                chip.ondragstart = (e) => {
+                    e.dataTransfer.setData('text/plain', JSON.stringify({ word: item.word, bankIndex: bankIdx }));
+                };
+
+                wordBank.appendChild(chip);
+            });
+
+            dropArea.ondragover = (e) => e.preventDefault();
+            dropArea.ondrop = (e) => {
+                e.preventDefault();
+                if (!canAnswer) return;
+                const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+                if (!availableWords[data.bankIndex].used) {
+                    userArrangedWords.push({ word: data.word, bankIndex: data.bankIndex });
+                    availableWords[data.bankIndex].used = true;
+                    renderSentenceBoard();
+                }
+            };
+        }
+
+        function checkSentenceAnswer() {
+            if (!canAnswer) return;
+
+            const targetSentence = sentenceQuestions[sentenceIndex];
+            const userSentence = userArrangedWords.map(item => item.word).join(" ");
+
+            canAnswer = false;
+            document.getElementById('sentence-check-btn').style.display = 'none';
+
+            if (userSentence === targetSentence) {
+                playCorrectSound();
+                sentenceScore++;
+                document.getElementById('sentence-current-score').innerText = sentenceScore;
+            } else {
+                playWrongSound();
+                const correctBox = document.getElementById('sentence-correct-answer');
+                correctBox.innerHTML = `<strong>Correct Sentence:</strong><br>${targetSentence}`;
+                correctBox.style.display = 'block';
+            }
+
+            document.getElementById('sentence-next-btn').style.display = 'inline-block';
+        }
+
+        function nextSentenceQuestion() {
+            sentenceIndex++;
+            if (sentenceIndex < sentenceQuestions.length) {
+                loadSentenceQuestion();
+            } else {
+                score = sentenceScore;
+                selectedQuestionCount = sentenceQuestions.length;
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const completionTime = getFormattedDateTime();
+            window.saveSessionRecord(currentTopic, score, selectedQuestionCount, completionTime);
+            
+            showScreen('result-screen');
+            const percentage = Math.round((score / selectedQuestionCount) * 100);
+            document.getElementById('final-score').innerText = `${percentage}%`;
+            document.getElementById('completion-time').innerText = `📅 Completed on: ${completionTime}`;
+
+            const feedback = document.getElementById('feedback-message');
+            
+            if (percentage === 100) {
+                feedback.innerText = "🌟 Outstanding! Perfect Score! You're a Grammar Champion! 🌟";
+            } else if (percentage >= 70) {
+                feedback.innerText = "👍 Great Job! Keep up the brilliant work!";
+            } else if (percentage >= 50) {
+                feedback.innerText = "😊 Good try! Practice makes perfect!";
+            } else {
+                feedback.innerText = "💪 Don't give up! You can do better next time!";
+            }
+        }
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
